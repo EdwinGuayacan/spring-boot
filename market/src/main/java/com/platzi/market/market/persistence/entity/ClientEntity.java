@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name="clientes")
-public class Client {
+public class ClientEntity {
     @Id
     private String id;
     @Column(name = "nombre")
@@ -21,7 +21,7 @@ public class Client {
     private String email;
 
     @OneToMany(mappedBy = "client")
-    private List<Purchase> purchases;
+    private List<PurchaseEntity> purchases;
 
     public String getId() {
         return id;

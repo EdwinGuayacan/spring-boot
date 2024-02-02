@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "compras_productos")
-public class PurchaseProducts {
+public class PurchaseProductsEntity {
     @EmbeddedId
     private PurchaseProductsPK id;
     @Column(name = "cantidad")
@@ -15,13 +15,13 @@ public class PurchaseProducts {
     private Boolean status;
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-    private Category category;
+    private CategoryEntity category;
     @ManyToOne
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
-    private Purchase purchase;
+    private PurchaseEntity purchase;
     @ManyToOne
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)
-    private Product product;
+    private ProductEntity product;
     public PurchaseProductsPK getId() {
         return id;
     }

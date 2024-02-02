@@ -1,7 +1,7 @@
 package com.platzi.market.market.persistence;
 
 import com.platzi.market.market.persistence.crud.ProductCrudRepository;
-import com.platzi.market.market.persistence.entity.Product;
+import com.platzi.market.market.persistence.entity.ProductEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -9,23 +9,23 @@ import java.util.Optional;
 @Repository
 public class ProductRepository {
     private ProductCrudRepository productCrudRepository;
-    public List<Product> getAll() {
-        return (List<Product>) productCrudRepository.findAll();
+    public List<ProductEntity> getAll() {
+        return (List<ProductEntity>) productCrudRepository.findAll();
     }
 
-    public List<Product> getByCategory (int categoryId){
+    public List<ProductEntity> getByCategory (int categoryId){
         return  productCrudRepository.findByCategoryIdOrderByNameASC(categoryId);
     }
 
-    public Optional<List<Product>> getLimited(int amount){
+    public Optional<List<ProductEntity>> getLimited(int amount){
         return productCrudRepository.findByStockLessThanAndStatus(amount, true);
     }
 
-    public Optional<Product> getProduct(int productId){
+    public Optional<ProductEntity> getProduct(int productId){
         return productCrudRepository.findById(productId);
     }
 
-    public Product save(Product product) {
+    public ProductEntity save(ProductEntity product) {
         return productCrudRepository.save(product);
     }
 

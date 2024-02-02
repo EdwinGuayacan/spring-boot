@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "categorias")
-public class Category {
+public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
@@ -16,7 +16,7 @@ public class Category {
     @Column(name = "estado")
     private Boolean status;
     @OneToMany(mappedBy = "category")
-    private List<Product> products;
+    private List<ProductEntity> products;
 
     public Integer getCategoryId() {
         return categoryId;

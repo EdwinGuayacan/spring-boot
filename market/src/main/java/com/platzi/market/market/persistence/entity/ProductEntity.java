@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "productos")
-public class Product {
+public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
@@ -13,18 +13,19 @@ public class Product {
     @Column(name = "nombre")
     private String name;
     @Column(name = "id_categoria")
-    private Integer CategoryId;
+    private Integer categoryId;
     @Column(name = "codigo_barras")
     private String barCode;
     @Column(name = "precio_venta")
     private Double salePrice;
     @Column(name = "cantidad_stock")
-    private Integer Stock;
+    private Integer stock;
     @Column(name = "estado")
-    private Boolean state;
+    private Boolean status;
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-    private Category category;
+    private CategoryEntity category;
+
     public Integer getProductId() {
         return productId;
     }
@@ -42,11 +43,11 @@ public class Product {
     }
 
     public Integer getCategoryId() {
-        return CategoryId;
+        return categoryId;
     }
 
     public void setCategoryId(Integer categoryId) {
-        CategoryId = categoryId;
+        this.categoryId = categoryId;
     }
 
     public String getBarCode() {
@@ -66,20 +67,18 @@ public class Product {
     }
 
     public Integer getStock() {
-        return Stock;
+        return stock;
     }
 
     public void setStock(Integer stock) {
-        Stock = stock;
+        this.stock = stock;
     }
 
-    public Boolean getState() {
-        return state;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public void setState(Boolean state) {
-        this.state = state;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
-
-
 }
